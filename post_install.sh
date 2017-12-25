@@ -14,7 +14,7 @@ echo "Performing first update..."
 echo
 
 # First update
-sudo dnf update
+sudo dnf update -y
 echo
 echo "Updating complete."
 echo
@@ -33,12 +33,33 @@ echo "Performing application installations..."
 
 # Install vim
 sudo dnf install -y vim
+echo
+
+# Install NMap
+sudo dnf install -y nmap
+echo
+
+# Install Ettercap
+sudo dnf install -y ettercap
+echo
 
 # Install KeepassX
 sudo dnf install -y keepassx
+echo
 
 # Install WireShark
 sudo dnf install -y wireshark wireshark-gtk
+echo
+
+# Install Metasploit Framework
+sudo -i -u root curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
+  chmod 755 msfinstall && \
+  ./msfinstall
+echo
 
 # Remove unnecessary apps
-sudo dnf remove 
+# sudo dnf remove
+
+echo "Post installation procedures completed."
+echo
+
