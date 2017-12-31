@@ -66,11 +66,11 @@ sudo dnf install -y wireshark wireshark-gtk
 echo
 
 # Install VirtualBox
-sudo dnf install binutils gcc make patch kibgomp glibc-headers glibc-devel kernel-hearders kernel-devel dkms
+# sudo dnf install binutils gcc make patch kibgomp glibc-headers glibc-devel kernel-hearders kernel-devel dkms
 # --> perform required reboot here...find how to do so
-sudo dnf install VirtualBox-5.2 -y
-sudo usermod -a -G vboxusers m0nkeydrag0n
-echo
+# sudo dnf install VirtualBox-5.2 -y
+# sudo usermod -a -G vboxusers m0nkeydrag0n
+# echo
 
 # Install Metasploit Framework
 sudo -i -u root curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
@@ -80,7 +80,7 @@ echo
 
 # --> Cautiously adding things...
 # Remove unnecessary apps
-sudo dnf remove rhythmbox libreoffice cheese shotwell
+sudo dnf remove rhythmbox libreoffice* cheese shotwell evolution
 
 # Clean packages
 echo "Cleaning up the mess..."
