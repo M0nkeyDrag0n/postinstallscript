@@ -11,25 +11,25 @@
 #                                   |___/                 |___/                #
 #                                                                              #
 ################################################################################
-# Post installation script for Fedora                                          #
+# Post installation script                                                     #
 # ================================================                             #
-# - perform initial update                                                     #
+# - update                                                                     #
 # - install apps                                                               #
 # - upgrade all packages                                                       #
 # - remove unnecessary fluff                                                   #
 # - success!                                                                   #
 ################################################################################
 
-echo "Performing first update..."
-echo
-
 # First update
-sudo dnf update -y
+echo "Performing update..."
 echo
+sudo dnf update -y
 echo "Updating complete."
 echo
 
-# Upgrade OS prior to moving forward
+# Perform necessary upgrades
+echo "Upgrading..."
+echo
 sudo dnf upgrade -y
 echo
 echo "Upgrade complete."
@@ -38,9 +38,13 @@ echo
 # Add repos for applications
 echo "Adding repositories..."
 echo
+sudo -i -u root cd /etc/yum.repos.d/ && wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+echo
+echo "Another round of updates..."
+sudo dnf update -y
+echo
 
 echo "Performing application installations..."
-
 # Install vim
 sudo dnf install -y vim
 echo
@@ -61,15 +65,29 @@ echo
 sudo dnf install -y wireshark wireshark-gtk
 echo
 
+# Install VirtualBox
+sudo dnf install binutils gcc make patch kibgomp glibc-headers glibc-devel kernel-hearders kernel-devel dkms
+# --> perform required reboot here...find how to do so
+sudo dnf install VirtualBox-5.2 -y
+sudo usermod -a -G vboxusers m0nkeydrag0n
+echo
+
 # Install Metasploit Framework
 sudo -i -u root curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
   chmod 755 msfinstall && \
   ./msfinstall
 echo
 
+# --> Cautiously adding things...
 # Remove unnecessary apps
-# sudo dnf remove
+sudo dnf remove rhythmbox libreoffice cheese shotwell
+
+# Clean packages
+echo "Cleaning up the mess..."
+sudo dnf clean all
+echo
 
 echo "Post installation procedures completed."
+echo "Go forth and conquer."
 echo
 
