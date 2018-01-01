@@ -66,11 +66,13 @@ sudo dnf install -y wireshark wireshark-gtk
 echo
 
 # Install VirtualBox
-# sudo dnf install binutils gcc make patch kibgomp glibc-headers glibc-devel kernel-hearders kernel-devel dkms
-# --> perform required reboot here...find how to do so
-# sudo dnf install VirtualBox-5.2 -y
-# sudo usermod -a -G vboxusers m0nkeydrag0n
-# echo
+cd Downloads/ && wget https://www.virtualbox.org/download/oracle_vbox.asc
+sudo rpm --import oracle_vbox.asc
+cd ..
+sudo dnf install binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms -y
+sudo dnf install VirtualBox-5.2 -y
+sudo usermod -a -G vboxusers m0nkeydrag0n
+echo
 
 # Install Metasploit Framework
 sudo -i -u root curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
