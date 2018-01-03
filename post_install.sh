@@ -38,7 +38,8 @@ echo
 # Add repos for applications
 echo "Adding repositories..."
 echo
-sudo -i -u root cd /etc/yum.repos.d/ && sudo -i -u root wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+sudo -i -u root cd /etc/yum.repos.d/
+sudo -i -u root wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
 echo
 echo "Another round of updates..."
 sudo dnf update -y
@@ -82,7 +83,7 @@ echo
 
 # --> Cautiously adding things...
 # Remove unnecessary apps
-sudo dnf remove rhythmbox libreoffice* cheese shotwell evolution
+sudo dnf remove rhythmbox libreoffice* cheese shotwell evolution -y
 
 # Clean packages
 echo "Cleaning up the mess..."
