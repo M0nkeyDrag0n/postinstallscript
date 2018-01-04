@@ -20,6 +20,10 @@
 # - success!                                                                   #
 ################################################################################
 
+# --> Cautiously adding things...
+# Remove unnecessary apps
+sudo dnf remove rhythmbox libreoffice* cheese shotwell evolution -y
+
 # First update
 echo "Performing update..."
 echo
@@ -77,10 +81,6 @@ sudo -i -u root curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus
   chmod 755 msfinstall && \
   ./msfinstall
 echo
-
-# --> Cautiously adding things...
-# Remove unnecessary apps
-sudo dnf remove rhythmbox libreoffice* cheese shotwell evolution -y
 
 # Clean packages
 echo "Cleaning up the mess..."
