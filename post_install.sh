@@ -38,8 +38,8 @@ echo
 # Add repos for applications
 echo "Adding repositories..."
 echo
-root cd /etc/yum.repos.d/
-wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+cd /etc/yum.repos.d/
+sudo wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
 echo
 echo "Another round of updates..."
 sudo dnf update -y
@@ -67,9 +67,6 @@ sudo dnf install -y wireshark wireshark-gtk
 echo
 
 # Install VirtualBox
-cd Downloads/ && wget https://www.virtualbox.org/download/oracle_vbox.asc
-sudo rpm --import oracle_vbox.asc
-cd ..
 sudo dnf install binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms -y
 sudo dnf install VirtualBox-5.2 -y
 sudo usermod -a -G vboxusers m0nkeydrag0n
