@@ -38,8 +38,8 @@ echo
 # Add repos for applications
 echo "Adding repositories..."
 echo
-sudo -i -u root cd /etc/yum.repos.d/
-sudo -i -u root wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+root cd /etc/yum.repos.d/
+wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
 echo
 echo "Another round of updates..."
 sudo dnf update -y
