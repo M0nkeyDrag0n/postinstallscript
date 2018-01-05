@@ -71,7 +71,7 @@ sudo dnf install -y wireshark wireshark-gtk
 echo
 
 # Install VirtualBox
-cd Downloads/ && wget https://www.virtualbox.org/download/oracle_vbox.asc
+cd /home/m0nkeydrag0n/Downloads/ && wget https://www.virtualbox.org/download/oracle_vbox.asc
 sudo rpm --import oracle_vbox.asc
 cd ..
 sudo dnf install binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms -y
@@ -81,7 +81,7 @@ echo
 
 # Install Metasploit Framework
 sudo -i -u root curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
-  chmod 755 msfinstall && \
+  sudo chmod 755 msfinstall && \
   ./msfinstall
 echo
 
