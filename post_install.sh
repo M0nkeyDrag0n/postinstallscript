@@ -43,7 +43,7 @@ echo
 echo "Adding repositories..."
 echo
 cd /etc/yum.repos.d/
-sudo -i -u root wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+sudo wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
 echo
 echo "Another round of updates..."
 sudo dnf update -y
