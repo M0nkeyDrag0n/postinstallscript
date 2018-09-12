@@ -27,16 +27,8 @@ sudo dnf remove rhythmbox libreoffice* cheese shotwell evolution -y
 # First update
 echo "Performing update..."
 echo
-sudo dnf update -y
+sudo dnf update -y && sudo dnf upgrade -y
 echo "Updating complete."
-echo
-
-# Perform necessary upgrades
-echo "Upgrading..."
-echo
-sudo dnf upgrade -y
-echo
-echo "Upgrade complete."
 echo
 
 # Add repos for applications
@@ -50,24 +42,8 @@ sudo dnf update -y
 echo
 
 echo "Performing application installations..."
-# Install vim
-sudo dnf install -y vim
-echo
-
-# Install NMap
-sudo dnf install -y nmap
-echo
-
-# Install Ettercap
-sudo dnf install -y ettercap
-echo
-
-# Install KeepassX
-sudo dnf install -y keepassx
-echo
-
-# Install WireShark
-sudo dnf install -y wireshark wireshark-gtk
+# Install vim nmap ettercap keepassx wireshark
+sudo dnf install -y vim nmap ettercap keepassx wireshark wireshark-gtk
 echo
 
 # Install VirtualBox
@@ -91,6 +67,6 @@ sudo dnf clean all
 echo
 
 echo "Post installation procedures completed."
-echo "Go forth and conquer."
+echo "Go forth and learn."
 echo
 
