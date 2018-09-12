@@ -21,7 +21,7 @@
 # Update system
 echo "Updating..."
 echo
-sudo apt-get y update && sudo apt-get y upgrade
+sudo apt-get -y update && sudo apt-get -y upgrade
 echo "Updating complete."
 echo
 
@@ -29,7 +29,7 @@ echo
 
 
 # Install some useful apps
-sudo apt-get install y vim nmap keepassx wireshark wireshark-gtk wireshark-qt terminix virtualbox virtualbox-ext-pack
+sudo apt-get install -y vim nmap keepassx wireshark wireshark-gtk wireshark-qt terminix virtualbox virtualbox-ext-pack
 
 # add vte to bashrc for Tilix
 sudo cat << EOF >> ~/.bashrc
@@ -40,7 +40,7 @@ fi
 EOF
 
 # prepare to install Metasploit Framework
-sudo apt-get install y gpgv2 autoconf bison build-essential curl git-core libapr1 libaprutil1 libcurl4-openssl-dev libgmp3-dev libpcap-dev libpq-dev libreadline6-dev libsqlite3-dev libssl-dev libsvn1 libtool libxml2 libxml2-dev libxslt-dev libyaml-dev locate ncurses-dev openssl postgresql postgresql-contrib wget xsel zlib1g zlib1g-dev
+sudo apt-get install -y gpgv2 autoconf bison build-essential curl git-core libapr1 libaprutil1 libcurl4-openssl-dev libgmp3-dev libpcap-dev libpq-dev libreadline6-dev libsqlite3-dev libssl-dev libsvn1 libtool libxml2 libxml2-dev libxslt-dev libyaml-dev locate ncurses-dev openssl postgresql postgresql-contrib wget xsel zlib1g zlib1g-dev
 
 # configure postgres
 sudo su postgres
