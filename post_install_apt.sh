@@ -31,22 +31,28 @@ echo
 # Install some useful apps
 sudo apt-get install -y vim nmap keepassx wireshark wireshark-gtk wireshark-qt terminix virtualbox virtualbox-ext-pack
 
-# add vte to bashrc for Tilix
+# Install VirtualBox Guest Additions
+sudo apt-get install -y virtualbox-guest-x11
+
+# Install dependencies for Kismet Wireless
+sudo apt-get install -y build-essential git libmicrohttpd-dev pkg-config zlib1g-dev libnl-3-dev libnl-genl-3-dev libcap-dev libpcap-dev libncurses5-dev libnm-dev libdw-dev libsqlite3-dev libprotobuf-dev libprotobuf-c-dev protobuf-compiler protobuf-c-compiler libsensors4-dev python python-setuptools python-protobuf python-sqlite python-requests librtlsdr0
+# Downlad Kismet
+git clone https://www.kismetwireless.net/git/kismet.git
+# Begin Kismet configure, compiling and install
+cd kismet
+./configure
+make -j4 # Set compile to four cores
+sudo make suidinstall
+sudo usermod -a -G kismet $USER # Current user added to kismet group
+
+
+# Add VTE to bashrc for Tilix
 sudo cat << EOF >> ~/.bashrc
-# adding statement to rectify issue regarding GTK+ for Tilix
+# Adding statement to rectify issue regarding GTK+ for Tilix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 	source /etc/profile.d/vte*.sh
 fi
 EOF
-
-# prepare to install Metasploit Framework
-sudo apt-get install -y gpgv2 autoconf bison build-essential curl git-core libapr1 libaprutil1 libcurl4-openssl-dev libgmp3-dev libpcap-dev libpq-dev libreadline6-dev libsqlite3-dev libssl-dev libsvn1 libtool libxml2 libxml2-dev libxslt-dev libyaml-dev locate ncurses-dev openssl postgresql postgresql-contrib wget xsel zlib1g zlib1g-dev
-
-# configure postgres
-sudo su postgres
-createuser msfuser -S -R -P
-createdb msfdb -O msfuser
-exit
 
 # Clean the place up
 echo "Cleaning up the mess..."
