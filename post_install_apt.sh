@@ -1,14 +1,10 @@
 #!/bin/bash
-#####################################################################
-#    ____    __  _____  ____   _  __  __  ______ __    _ 
-#   |    \  /  |/     ||    \ | ||  |/ / |   ___|\ \  // 
-#   |  |  \/   ||  /  ||  |  \| ||     \ |   ___| \ \//  
-#   |__|\__/|__||_____/|__|\____||__|\__\|______| /__/   
-#    _____   _____   ____    ______  _____  ____   _     
-#   |     \ |  .  | |    \  |   ___|/     ||    \ | |    
-#   |  |   \|     \ |     \ |   |  ||  /  ||  |  \| |    
-#   |______/|__|\__\|__|\__\|______||_____/|__|\____|    
-#                                                        
+######################################################################
+#          ___       _                _                 ___      
+#  ._ _ _ | . |._ _ | |__ ___  _ _  _| | _ _  ___  ___ | . |._ _ 
+#  | ' ' || | || ' || / // ._>| | |/ . || '_><_> |/ . || | || ' |
+#  |_|_|_|`___'|_|_||_\_\\___.`_. |\___||_|  <___|\_. |`___'|_|_|
+#                             <___'               <___'          
 #####################################################################
 #
 # Post installation script (apt fork)
@@ -29,7 +25,7 @@
 # Update system
 echo "Updating..."
 echo
-sudo apt-get -y update && sudo apt-get -y upgrade
+sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade
 echo "Updating complete."
 echo
 
@@ -50,16 +46,22 @@ git clone https://www.kismetwireless.net/git/kismet.git
 # Begin Kismet configure, compiling and install
 cd kismet
 ./configure
-make -j4 # manually set 4 threads
+# Use all cores/threads to hasten process!
+make -j$(nproc)
 sudo make suidinstall
 sudo usermod -a -G kismet $USER # Current user added to kismet group
 
+# Install Moloch dependencies
+sudo apt-get install -y libmagic-dev libpng-dev libssl-dev uuid-dev
+
 # Install Moloch
-git clone https://github.com/aol/moloch.git
+#cd /home/$USER
+#git clone https://github.com/aol/moloch.git
+#cd moloch
 # Configure and install Moloch
-./home/$USER/moloch/easybutton-build.sh --install
+#./easybutton-build.sh --install
 # Config setup
-sudo /home/$USER/moloch/make config
+#sudo /home/$USER/moloch/make config
 
 # Add VTE to bashrc for Tilix
 sudo cat << EOF >> ~/.bashrc
