@@ -19,7 +19,6 @@
 #	vim		keepassx	wireshark
 #	terminix	virtualbux	moloch
 #	kismet		nmap		
-#	
 # - reboot and finalize
 #
 #####################################################################
@@ -51,7 +50,7 @@ git clone https://www.kismetwireless.net/git/kismet.git
 # Begin Kismet configure, compiling and install
 cd kismet
 ./configure
-make -j4 # manually set 4 cores
+make -j4 # manually set 4 threads
 sudo make suidinstall
 sudo usermod -a -G kismet $USER # Current user added to kismet group
 
