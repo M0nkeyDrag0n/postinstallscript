@@ -10,14 +10,18 @@
 #   |______/|__|\__\|__|\__\|______||_____/|__/\____|    
 #                                                        
 #####################################################################
-# http://patorjk.com/software/taag/#p=display&c=bash&f=Rammstein
+# http://patorjk.com/software/taag/#p=display&c=bash&f=Rammstein    #
 #####################################################################
 #
 # Post installation script (apt fork)
 # ===================================
-# - update install
-# - remove fluff
+# - update Ubuntu
+# - remove the fluff..
 # - install applications
+#	vim		keepassx	wireshark
+#	terminix	virtualbux	moloch
+#	kismet		nmap		
+#	
 # - reboot and finalize
 #
 #####################################################################
@@ -49,10 +53,16 @@ git clone https://www.kismetwireless.net/git/kismet.git
 # Begin Kismet configure, compiling and install
 cd kismet
 ./configure
-make -j4 # Set compile to four cores
+make -j"nproc" # returns max cores
 sudo make suidinstall
 sudo usermod -a -G kismet $USER # Current user added to kismet group
 
+# Install Moloch
+git clone https://github.com/aol/moloch.git
+# Configure and install Moloch
+./moloch/easybutton-build.sh --install
+# Config setup
+/moloch/make config
 
 # Add VTE to bashrc for Tilix
 sudo cat << EOF >> ~/.bashrc
@@ -67,5 +77,5 @@ echo "Cleaning up the mess..."
 sudo apt autoremove
 echo
 
-echo "All done here, go forth a do the things!"
+echo "All done here, go forth and do the things!"
 
