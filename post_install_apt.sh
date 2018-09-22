@@ -51,16 +51,16 @@ git clone https://www.kismetwireless.net/git/kismet.git
 # Begin Kismet configure, compiling and install
 cd kismet
 ./configure
-make -j"nproc" # returns max cores
+make -j4 # manually set 4 cores
 sudo make suidinstall
 sudo usermod -a -G kismet $USER # Current user added to kismet group
 
 # Install Moloch
 git clone https://github.com/aol/moloch.git
 # Configure and install Moloch
-./moloch/easybutton-build.sh --install
+./home/$USER/moloch/easybutton-build.sh --install
 # Config setup
-/moloch/make config
+sudo /home/$USER/moloch/make config
 
 # Add VTE to bashrc for Tilix
 sudo cat << EOF >> ~/.bashrc
