@@ -45,6 +45,12 @@ read -p "Press [Enter] key to continue"
 fackEnterKey
 }
 
+# Move on over to the script location
+cd /postinstallscript
+
+#-------------------------------------------
+# Define what each user selection performs
+#-------------------------------------------
 one(){
 # stuff for selection 1
 echo "Updating and upgrading packages"
@@ -57,20 +63,20 @@ two(){
 echo "You have selected lightweight build"
 
 # Invoke lightweight build mini script
-cd /home/$USER
+cd /helper_scripts
 ./lwbuild.sh
 }
 
 three(){
 # stuff for selection 3
 echo "You have chosen the VM build"
-cd /home/$USER
+cd /helper_scripts
 }
 
 four(){
 # stuff for selection 4
 echo "Build with all the tools"
-cd /home/$USER
+cd /helper_scripts
 ./lwbuild.sh
 ./fwbuild.sh
 }
@@ -90,11 +96,11 @@ echo "#   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                      #"
 echo "#   1. Update                                              #"
 echo "#   2. Lightweight build for low power machines            #"
 echo "#   3. VM delight, virtualbox guest additions included     #"
-echo "#   4. Full build, only the tools I have learned to use    #"
+echo "#   4. "Full" build, only the tools I have learned to use  #"
 echo "#   5. Exit                                                #"
 echo "#                                                          #"
 echo "############################################################"
-	echo ""
+echo ""
 }
 
 #-------------------------------------------
@@ -114,8 +120,7 @@ esac
 }
 
 #-------------------------------------------
-# Trap CTRL+C, CTRL+Z and quit singles
-# Trap CTRL+C, CTRL+Z and quit singles
+# Trap CTRL+C, CTRL+Z and quit signals
 #-------------------------------------------
 trap '' SIGINT SIGQUIT SIGTSTP
 
