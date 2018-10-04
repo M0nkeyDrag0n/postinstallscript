@@ -32,7 +32,7 @@
 #-------------------------------------------
 # Set some primary parameters
 #-------------------------------------------
-EDITO=vim
+EDITOR=vim
 PASSWD=/etc/passwd
 RED='\033[0;41;30m'
 STD='\033[0;0;39m'
@@ -44,9 +44,6 @@ pause(){
 read -p "Press [Enter] key to continue"
 fackEnterKey
 }
-
-# Move on over to the script location
-cd /postinstallscript
 
 #-------------------------------------------
 # Define what each user selection performs
@@ -96,7 +93,7 @@ echo "#   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                      #"
 echo "#   1. Update                                              #"
 echo "#   2. Lightweight build for low power machines            #"
 echo "#   3. VM delight, virtualbox guest additions included     #"
-echo "#   4. "Full" build, only the tools I have learned to use  #"
+echo "#   4. "Full" build, tools I am continuing to hone         #"
 echo "#   5. Exit                                                #"
 echo "#                                                          #"
 echo "############################################################"
