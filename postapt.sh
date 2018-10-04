@@ -51,6 +51,10 @@ fackEnterKey
 one(){
 # stuff for selection 1
 echo "Updating and upgrading packages"
+sleep 2
+clear
+
+# Just update it man
 sudo apt-get -y update && sudo apt-get -y upgrade
 }
 
@@ -58,24 +62,39 @@ two(){
 # Selection 2 will contain all apps in the lighterweight build, these will also 
 # be present in the full-weight build
 echo "You have selected lightweight build"
+sleep 2
+clear
 
 # Invoke lightweight build mini script
 cd /helper_scripts
 ./lwbuild.sh
+cd ..
 }
 
 three(){
-# stuff for selection 3
+# Selection 3 will add the VirtualBox Guest Additions to your installation
 echo "You have chosen the VM build"
+sleep 2
+clear
+
+# Perform the requested scripts
 cd /helper_scripts
+cd ..
 }
 
 four(){
-# stuff for selection 4
-echo "Build with all the tools"
+# Selection 4 contains all the goods.  Lightweight plus the tools that I have 
+# learned, are in the process of learning or have an affinity for and continue
+# to use
+echo "Let's deploy all the tools!"
+sleep 2
+clear
+
+# Perform the requested scripts
 cd /helper_scripts
 ./lwbuild.sh
 ./fwbuild.sh
+cd ..
 }
 
 #-------------------------------------------
